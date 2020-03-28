@@ -1,12 +1,173 @@
 <!DOCTYPE html>
-<html lang='en-US' xmlns='http://www.w3.org/1999/xhtml' xmlns:b='http://www.google.com/2005/gml/b' xmlns:data='http://www.google.com/2005/gml/data' xmlns:expr='http://www.google.com/2005/gml/expr'><head>
-<link href='https://www.blogger.com/static/v1/widgets/2549344219-widget_css_bundle.css' rel='stylesheet' type='text/css'/>
-<title>0x1945 - github.io</title><meta charset='utf-8'/><meta content='0x1945' name='description'/><meta content='hack, tutorial, 101, bug bounty, pentest, writeup, ctf' name='keywords'/>
-<meta content='doweng' name='author'/><meta content='doweng' name='title'/><meta content='doweng' property='og:title'/><meta content='doweng' property='og:description'/><meta content='https://1.bp.blogspot.com/-8bMFLJdrfyQ/XYhTrFE15JI/AAAAAAAAFEk/seVTWIVVSWgOZevP1JNFtOuRjMO72SrXQCLcBGAsYHQ/s1600/poeticwizards.jpg' property='og:image'/><meta content='image/png' property='og:image:type'/><meta content='summary_large_image' property='twitter:card'/><meta content='doweng' property='twitter:title'/><meta content='doweng' property='twitter:description'/><meta content='https://1.bp.blogspot.com/-8bMFLJdrfyQ/XYhTrFE15JI/AAAAAAAAFEk/seVTWIVVSWgOZevP1JNFtOuRjMO72SrXQCLcBGAsYHQ/s1600/poeticwizards.jpg' property='twitter:image'/><meta content='width=device-width, initial-scale=1, maximum-scale=1' name='viewport'/><link href='/favicon.ico' rel='shortcut icon' type='image/x-icon'/>
-<style id='page-skin-1' type='text/css'><!--
-html,body{margin:0;height:100%;font-family: Arial, Helvetica, sans-serif;}* {  box-sizing: border-box;}.dad{margin:0;width:100%;height:100%;text-align:center;border:1px solid transparent;background-image:url('https://i.ibb.co/xhhd0LN/rere.jpg');  background-position: center;  background-repeat: no-repeat;  background-size: cover;filter: blur(8px);-webkit-filter: blur(8px);}.mom{width:auto;height:auto;border: 3px solid #bfbfbf;color: black;z-index:2;  position: absolute;  top: 50%;  left: 50%;  transform: translate(-50%, -50%);  background-color: rgb(255,255,255);  background-color: rgba(255,255,255, 0.5);padding: 20px;box-shadow:3px 3px 10px white;text-align:center;}.mom img{width:200px;height:200px;}.mom h2{margin:3px;}table{text-align:left;}table tr:hover,h2:hover,img:hover{transform:scale(1.05);}a{color:black;text-decoration:none;}a:hover{text-decoration:underline;}      
---></style>
-</head><body><div class='no-items section' id='body'></div><div class='dad'></div><div class='mom'><img src='https://i.ibb.co/G28RRtp/mmm.png'/><h2>0x1945</h2><table><tr><td>Facebook</td><td>:</td><td><a href='https://www.facebook.com/doweng.life' target='_blank' title='/doweng.life'>/doweng.life</a></td></tr><tr><td>Instagram</td><td>:</td><td><a href='https://www.instagram.com/_mrdho/' target='_blank' title='_mrdho'>@_mrdho</a></td></tr><tr><td>GitHub</td><td>:</td><td><a href='https://github.com/0x1945/' target='_blank' title='/0x1945'>/0x1945</a></td></tr>
-<script type="text/javascript" src="https://www.blogger.com/static/v1/widgets/1137688953-widgets.js"></script>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Saytime</title>
+</head>
+<style>
+  @import url('https://fonts.googleapis.com/css?family=Comic+Neue&display=swap');
 
-</body></html>
+  body {
+    font-family: 'Comic Neue', cursive;
+    min-height: 100vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    transition: all 1500ms ease-in-out;
+    background: #e3f2fd;
+  }
+
+  #app {
+    height: 90vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+
+  footer {
+    width: 100%;
+    height: 10vh;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+  }
+
+  footer div a {
+    position: relative;
+    text-decoration: none;
+  }
+
+  footer div a:hover::before {
+    /* background: linear-gradient(#ead6ee, #a0f1ea); */
+    opacity: .8;
+    top: -2px;
+    bottom: -2px;
+  }
+
+  .a-pagi::before, .a-sore::before, .a-malam::before {
+    content: " ";
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    top: calc(100% - 8px);
+    transition: all 120ms ease-in-out;
+    z-index: -1;
+  }
+
+  .a-pagi:hover::before, .a-sore:hover::before, .a-malam:hover::before{
+    opacity: .8;
+    top: -2px;
+    bottom: -2px;
+  }
+
+  .a-pagi::before {
+    background: #eeff41;
+  }
+
+  .a-sore::before {
+    background: #e3f2fd;
+  }
+
+  .a-malam::before {
+    background: #607d8b;
+  }
+</style>
+<body>
+  <div id="app">
+    <h1>
+      <span id="typed"></span>
+    </h1>
+  </div>
+  <footer>
+    <div>
+      created with <span style="color: red;">&hearts;</span> by <a class="link" href="https://doweng.ninja/" target="_blank" rel="nofollow">Dodo</a>,
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
+  <script>
+    let name = localStorage.name || ''
+    if (window.location.search.substr(1) != '') {
+      name, localStorage.name = window.location.search.substr(1)
+    }
+    let theme = {
+      pagi: {
+        body: '#e3f2fd',
+        text: '#000'
+      },
+      sore: {
+        body: '#ffd54f',
+        text: '#37474f'
+      },
+      malam: {
+        body: '#212121',
+        text: '#fff'
+      },
+    }
+    let now = ''
+    const typed = new Typed('#typed', {
+      strings: [''],
+      typeSpeed: 60,
+      showCursor: false
+    })
+
+    function changeTheme() {
+      const word = 'Selamat ' + now.slice(0, 1).toUpperCase() + now.slice(1) + ' ' + name
+      tmpNow = now == 'siang' ? 'pagi' : now
+      removeClassLink()
+      document.querySelectorAll('.link').forEach(el => {
+        el.classList.add('a-' + (tmpNow == 'siang' ? 'pagi' : tmpNow))
+      })
+      document.body.style.background = theme[tmpNow].body
+      document.querySelector('#app').style.color = theme[tmpNow].text
+      document.querySelector('footer').style.color = theme[tmpNow].text
+      document.querySelectorAll('.link').forEach(el => {
+        el.style.color = theme[tmpNow].text
+      })
+      typed.strings = [word]
+      document.title = word
+      typed.reset(1)
+    }
+
+    function tmpChangeTheme() {
+      now = now == 'pagi' || now == 'siang' ? 'sore' :
+             now == 'sore' ? 'malam' :
+             now == 'malam' ? 'pagi' : ''
+      changeTheme()
+    }
+
+    function removeClassLink() {
+      document.querySelectorAll('.link').forEach(el => {
+        const _ = el.classList
+        _.remove('a-pagi')
+        _.remove('a-sore')
+        _.remove('a-malam')
+      })
+    }
+
+    setInterval(() => {
+      const d = new Date()
+      const jam = d.getHours()
+      const oldNow = now
+      if (jam >= 6 && jam < 12) {
+        now = 'pagi'
+      }
+      else if (jam >= 12 && jam < 15) {
+        now = 'siang'
+      }
+      else if (jam >= 15 && jam < 19) {
+        now = 'sore'
+      }
+      else if ((jam >= 19 && jam <= 24) || jam < 6) {
+        now = 'malam'
+      }
+
+      oldNow != now ? changeTheme() : ''
+    }, 150)
+  </script>
+</body>
+</html>
