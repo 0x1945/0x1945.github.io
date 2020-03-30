@@ -4,13 +4,44 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saytime</title>
+  <script type="text/javascript">
+            function showTime() {
+                var a_p = "";
+                var today = new Date();
+                var curr_hour = today.getHours();
+                var curr_minute = today.getMinutes();
+                var curr_second = today.getSeconds();
+                if (curr_hour < 12) {
+                    a_p = "AM";
+                } else {
+                    a_p = "PM";
+                }
+                if (curr_hour == 0) {
+                    curr_hour = 12;
+                }
+                if (curr_hour > 12) {
+                    curr_hour = curr_hour - 12;
+                }
+                curr_hour = checkTime(curr_hour);
+                curr_minute = checkTime(curr_minute);
+                curr_second = checkTime(curr_second);
+                document.getElementById('time').innerHTML=curr_hour + ":" + curr_minute + ":" + curr_second + " " + a_p;
+            }
+             
+            function checkTime(i) {
+                if (i < 10) {
+                    i = "0" + i;
+                }
+                return i;
+            }
+            setInterval(showTime, 500);         
+        </script>
 </head>
 <style>
   @import url('https://fonts.googleapis.com/css?family=Comic+Neue&display=swap');
 
   body {
     font-family: 'Comic Neue', cursive;
-    min-height: 100vh;
     display: grid;
     justify-items: center;
     align-items: center;
@@ -19,12 +50,15 @@
     transition: all 1500ms ease-in-out;
     background: #e3f2fd;
   }
-
-  #app {
-    height: 90vh;
-    display: grid;
+ 
+ #time {
+ 	color: white;
     justify-items: center;
     align-items: center;
+ }
+ 
+  #app {
+   color: white;
   }
 
   footer {
@@ -77,11 +111,15 @@
   }
 </style>
 <body>
+	<br><br><br><br><br><br><br><br><br><br>
   <div id="app">
     <h1>
-      <span id="typed"></span>
-    </h1>
+      <span id="typed"></span> <font color="red"> Dea</font>
+   </h1> 
   </div>
+  <h3>
+  <div id="time"></div></h3>
+  <br><br><br>  <br><br><br>  <br><br><br>
   <footer>
     <div>
       created with <span style="color: red;">&hearts;</span> by <a class="link" href="https://doweng.ninja/" target="_blank" rel="nofollow">Dodo</a>,
